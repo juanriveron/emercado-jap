@@ -142,8 +142,14 @@ a.custom-card:hover {
 .login {
   box-sizing: border-box;
   display: block;
-  background-color: aquamarine;
+  background: url(../img/fondo.jpg) repeat;
+  background-size: cover;
+  
   align-content: center;
   text-align: center;
   margin-left:auto;
+}
+
+.login h2{
+  margin-top: 1em;
 }
