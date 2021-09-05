@@ -43,5 +43,32 @@ var getJSONData = function(url){
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
+function boton_usuario(){
+  let htmlContentToAppend="";
+  htmlContentToAppend+=`<p>${sessionStorage.getItem('ingrese_email')}`
+
+
+}
+
+
 document.addEventListener("DOMContentLoaded", function(e){
+  let usuario2=sessionStorage.getItem("ingrese_email")
+  //let password1=sessionStorage.getItem("ingrese_password")
+
+  document.getElementById("Ingreso23").innerHTML=usuario2
+
+  
 });
+
+function Cerrar_Sesion(){
+  sessionStorage.removeItem('ingrese_email');
+  sessionStorage.removeItem('ingrese_password');
+  location.replace('Index.html')
+  location.replace('ingrese_password')
+}
+
+/* para que me redirija si no estoy ingresado */
+var ingresar=sessionStorage.getItem("ingrese_email");
+  if (ingresar===null){
+    location.replace("Index.html");
+}

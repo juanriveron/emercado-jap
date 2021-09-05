@@ -42,14 +42,13 @@
     <form class="form-login" action="home.html">
       <img src="img/login.png" alt="logo JAP" width="400">
       <h2>Iniciar sesion</h2>
-      <input type="email" name="usuario" placeholder="ingrese email" required>
+      <input id="email" type="email" name="usuario" placeholder="ingrese email" required>
       <br>
-      <input type="password" name="usuario" placeholder="ingrese contrasena" required>
+      <input id="password" type="password" name="usuario" placeholder="ingrese contrasena" required>
       <br>
-      <p><input type="submit" value="Enviar"></p>
+      <p><input id="iniciar_sesion" type="submit" value="Enviar" onclick="guardado()"></p>
     </form>
   </div>
-  <script src="js/init.js"></script>
   <script src="js/login.js"></script>
 </body>
 </html>
