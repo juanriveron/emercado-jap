@@ -31,8 +31,6 @@ function sortproducts(criteria, array){
             return 0;
         });
     }
-    console.log(result)
-
     return result;
 }
 
@@ -45,7 +43,7 @@ function sortAndShowProducts(sortCriteria, productsArray){
 
     currentproductssArray = sortproducts(currentSortCriteria, currentproductsArray);
 
-    //Muestro las categorías ordenadas
+    //Muestro los productos ordenadas
     showProductsArray();
 }
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -119,7 +117,7 @@ function showProductsArray(){
         <a href="product-info.html" class="list-group-item list-group-item-action">
                 <div class="row">
                     <div class="col-3">
-                        <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
+                        <img src="` + product.imgSrc + `" class="img-thumbnail">
                     </div>
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">

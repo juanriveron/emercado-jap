@@ -3,7 +3,6 @@
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
     document.getElementById("iniciar_sesion").addEventListener("click",guardado)
-
 });
 
 function guardado(){
