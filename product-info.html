@@ -71,9 +71,9 @@
         <div id="insertarComentario">
           <form>
             <div class="row text-center text-lg-left pt-2">
-              <label for="newComment" class="lead" >Inserte comentario y calificación:</label>
+              <label for="newComment" class="lead" style="margin-top: 20px;">Inserte comentario y calificación:</label>
             </div>
-            <input type="text" class="form-control" id="newComment" rows="5">
+            <input placeholder="Ingrese su comentario" class="form-control" id="newComment" autocomplete="off" rows="5">
             <select class="form-control" id="score">
               <option value="1">1</option>
               <option value="2">2</option>
@@ -88,10 +88,6 @@
   </main>
   <div id="spinner-wrapper">
     <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
     </div>
   </div>
   <script src="js/jquery-3.4.1.min.js"></script>
