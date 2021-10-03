@@ -20,17 +20,21 @@
         <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
         <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
         <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-        <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-        <a class="py-2 d-none d-md-inline-block"  id="Ingreso23"></a>
-        <a class="py-2 d-none d-md-inline-block" href="Index.html" onclick="Cerrar_Sesion()">Cerrar sesion</a>
-        <!--otra forma de poner el nombre
-        <a class="py-2 d-none d-md-inline-block" href="my-profile.html" id="Ingreso23"></a>-->
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="Ingreso23" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+          <div class="dropdown-menu" aria-labelledby="Ingreso23">
+            <a class="dropdown-item" href="cart.html">Ver mi carrito</a>
+            <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
+            <a class="dropdown-item" href="Index.html" onclick="Cerrar_Sesion()">Cerrar sesion</a>
+          </div>
+        </div>
       </div>
     </nav>
-    <div class="text-center p-4">
+    <main role="main" class="pb-5">
+      <div class="text-center p-4">
       <h2>Productos</h2>
       <p class="lead">Verás aquí todas los productos del sitio.</p>
-  </div>
+    </div>
     <div class="container">
       <div class="row">
           <div class="col text-right">
@@ -44,7 +48,6 @@
                   <label class="btn btn-light" id="sortByCount" >
                       <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Popularidad
                   </label>
-                  
               </div>
           </div>
       </div>
@@ -70,8 +73,10 @@
             </div>
           </div>
       </div>
-    <div class="container p-5" id='product_list'>
+      <div class="row"></div>
+    <div class="list-group" id='product_list'>
     </div>
+    </main>
     <div id="spinner-wrapper"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>

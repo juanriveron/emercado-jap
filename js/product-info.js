@@ -4,24 +4,32 @@
 var product = {};
 var currentCommentsArray=[];
 
-
+/* AGREGO CARRUSEL */
 function showImagesGallery(array){
 
     let htmlContentToAppend = "";
+    let indicators = "";
+    /* primera imagen 'active' */
+    htmlContentToAppend = `<div class="carousel-item active">
+    <img class="d-block w-100" src="${array[0]}" alt="holis">
+  </div>`;
+  /* primer indicador 'active' */
+    indicators = `<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>`;
+  
 
-    for(let i = 0; i < array.length; i++){
+    for(let i = 1; i < array.length; i++){
         let imageSrc = array[i];
 
         htmlContentToAppend += `
-        <div class="col-lg-3 col-md-4 col-6">
-            <div class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="`+ imageSrc + `" alt="">
+        
+        <div class="carousel-item">
+                <img class="d-block w-100" src="`+ imageSrc + `" alt="">
             </div>
-        </div>
-        `
-
-        document.getElementById("productImagesGallery").innerHTML = htmlContentToAppend;
+        `;
+        indicators += `<li data-target="#carouselExampleIndicators" data-slide-to="`+ imageSrc + `"></li>`
     }
+    document.getElementById("carrusel").innerHTML = htmlContentToAppend;
+    document.getElementById("indicadores").innerHTML = indicators
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -134,7 +142,7 @@ function showComment(){
 
 function saveComment(){
     var dateComment = new Date();
-    let finalDate = dateComment.getDate()+ "-" + (dateComment.getMonth() +1) + "-" + dateComment.getFullYear()+ " " + dateComment.getHours()+":"+dateComment.getMinutes()+":"+dateComment.getSeconds(); 
+    let finalDate = dateComment.getFullYear()+ "-" + (dateComment.getMonth() +1)+ "-" + dateComment.getDate() + " " +  dateComment.getHours()+":"+dateComment.getMinutes()+":"+dateComment.getSeconds(); 
 
     newComment= {
         score: document.getElementById("score").value,
@@ -144,4 +152,28 @@ function saveComment(){
     }
     currentCommentsArray.push(newComment);
     showComment();
+}
+/* mostrar relacionados */
+document.addEventListener("DOMContentLoaded", function(e){
+    getJSONData(PRODUCT_INFO_URL).then(function(resultObj1){
+        if (resultObj1.status === "ok"){
+            infoProduct = resultObj1.data;
+            getJSONData(PRODUCTS_URL).then(function(resultObj2){
+                if(resultObj2.status=="ok"){
+                    productos = resultObj2.data;
+                    showRelated(infoProduct.relatedProducts);
+                }
+            }
+        )}
+    })
+})
+
+/* uso la misma variable que para los comentarios */
+function showRelated(currentCommentsArray){
+    let html = "";
+    for(let i = 0; i < currentCommentsArray.length; i++){
+        let related = currentCommentsArray[i];
+        html += `<div>`+ productos[related].name + `</div>`
+    }
+    document.getElementById("productRelated").innerHTML = html;
 }
