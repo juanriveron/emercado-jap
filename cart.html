@@ -17,7 +17,7 @@
       font-size: 1.125rem;
       text-anchor: middle;
       -webkit-user-select: none;
-      -moz-user-select: none;
+      -moz-user-select: none; 
       -ms-user-select: none;
       user-select: none;
     }
@@ -52,13 +52,102 @@
       </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 17/10/2021) y Entrega 7 (Fecha de entrega: 14/11/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <div class="container">
+    <div class="text-center p-4">
+      <h2>Mi carrito</h2>
     </div>
+    <div class="row justify-content-md-center">
+      <div class="col-md-8 order-md-1">
+        <h4 class="mb-3">Articulos a comprar</h4>
+
+          
+            <div class="container">
+              <div class="row" >
+                
+                <strong class="col" id="productName" style="text-align:center;">Nombre</strong>
+                <strong class="col" style="text-align:center;">Costo</strong>
+                <strong class="col" id="productCount" style="text-align:center;">Cantidad</strong>
+                <strong class="col" style="text-align:center;">Subtotal</strong>
+                
+              
+                <!-- Force next columns to break to new line -->
+                <div class="w-100"></div>              
+                <div class="row" id="renglon"></div>
+              </div>
+            </div>
+          
+            <hr class="mb-4">
+            <h4 class="mb-3">Tipo de envio</h4>
+            <div class="d-block my-3">
+              <div class="custom-control custom-radio">
+                <input id="enviopremium"  type="radio" name="envioTipo" class="custom-control-input" checked="" required="">
+                <label class="custom-control-label" for="enviopremium">Premium 2 a 5 dias (15%)</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input id="envioexpress"  type="radio" name="envioTipo" class="custom-control-input" required="">
+                <label class="custom-control-label" for="envioexpress">Express 5 a 8 dias (7%)</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input id="enviostandard"  type="radio" name="envioTipo" class="custom-control-input" required="">
+                <label class="custom-control-label" for="enviostandard">Standard 12 a 15 dias (5%)</label>
+              </div>
+            </div>
+          <br>
+          
+          
+            <h4 class="mb-3">Direccion de envio</h4>
+            <form class="needs-validation" id="cart-info">
+              
+                <div class="mb-3">
+                  <label for="calleenvio">Calle</label>
+                  <input type="text" class="form-control" id="calleenvio" placeholder="" value="" >
+                  <div class="invalid-feedback">
+                    Ingresar calle
+                  </div>
+                  <label for="numeroenvio">Numero</label>
+                  <input type="text" class="form-control" id="numeroenvio" placeholder="" value="" >
+                  <div class="invalid-feedback">
+                    Ingresar numero
+                  </div>
+                  <label for="esquinaenvio">Equina</label>
+                  <input type="text" class="form-control" id="esquinaenvio" placeholder="" value="" >
+                  <div class="invalid-feedback">
+                    Ingresar esquina
+                  </div>
+                </div>
+              
+            </form>
+          
+            
+            <div class="row"></div>
+              <br>
+              <h4 class="mb-3">Costos</h4>
+              <ul class="list-group mb-3">
+                  <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                      <h6 class="my-0">Subtotal</h6>
+                      <small class="text-muted">Costo unitario del producto por cantidad</small>
+                    </div>
+                    <span class="text-muted" id="productTotalCost">-</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                      <h6 class="my-0">Costo de envio</h6>
+                      <small class="text-muted">Según el tipo de envio</small>
+                    </div>
+                    <span class="text-muted" id="comissionText">-</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between">
+                    <span>Total ($)</span>
+                    <strong id="totalCost">-</strong>
+                  </li>
+                </ul>
+                <hr class="mb-4">
+              <button class="btn btn-primary btn-lg" type="submit">Vender</button>
+              </div>
+            </div>
+      </div>
+    </div>    
   </div>
   <div id="spinner-wrapper">
     <div class="lds-ring">
@@ -76,3 +165,9 @@
 </body>
 
 </html>
+<!--<div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
+      <h4 class="alert-heading">¡A trabajar! :)</h4>
+      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 17/10/2021) y Entrega 7 (Fecha de entrega: 14/11/2021).</p>
+      <hr>
+      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+    </div>-->
