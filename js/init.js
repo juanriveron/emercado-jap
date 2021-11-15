@@ -50,12 +50,14 @@ function boton_usuario(){
 
 }
 
-
+//mostrar nombre de usuario arriba//
 document.addEventListener("DOMContentLoaded", function(e){
-  let usuario2=sessionStorage.getItem("ingrese_email")
-  //let password1=sessionStorage.getItem("ingrese_password")
+  let usuario=sessionStorage.getItem("ingrese_email")
+  let a= usuario.indexOf('@');
+  let nombre = usuario.slice(0,a);
 
-  document.getElementById("Ingreso23").innerHTML=usuario2
+  document.getElementById("Ingreso23").innerHTML=nombre;
+  localStorage.setItem('nombre',nombre);
 
   
 });
@@ -63,8 +65,9 @@ document.addEventListener("DOMContentLoaded", function(e){
 function Cerrar_Sesion(){
   sessionStorage.removeItem('ingrese_email');
   sessionStorage.removeItem('ingrese_password');
-  location.replace('Index.html')
-  location.replace('ingrese_password')
+  localStorage.clear();
+
+  location.replace('Index.html');
 }
 
 /* para que me redirija si no estoy ingresado */

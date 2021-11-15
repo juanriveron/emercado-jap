@@ -29,6 +29,7 @@ function showCart(){
     let i=0;
 
     for(let article of cartProducts){
+        //convierto moneda//
         if(article.currency==PESO_SYMBOL){
             article.unitCost = article.unitCost/40
             article.currency = DOLLAR_SYMBOL
@@ -61,12 +62,87 @@ function updateSubtotal(count,unitCost,i,currency){
     updateTotal();
 }
 
+
 function updateTotal(){
     let total = 0;
     for(let article of cartProducts){
         total+=article.count*article.unitCost;
     }
+
+    //agrego costo de envio//
+    let costoEnvio = document.querySelectorAll('input[type="radio"]');
+    //agrego evento//
+    document.querySelector('#envioTipo').addEventListener('change',()=>{
+
+        // recorremos opciones ya que dentro hay una lista de nodos
+        costoEnvio.forEach(opcion =>{
+           
+        //si la opcion recorrida esta seleccionada mostramos esa opcion
+            if(opcion.checked){
+                let costoEnvio2 = (opcion.value*total).toFixed(2);
+                document.getElementById("comissionText").innerHTML=DOLLAR_SYMBOL+" "+ costoEnvio2;
+                document.getElementById("totalCost").innerHTML=DOLLAR_SYMBOL+(parseFloat(total)+parseFloat(costoEnvio2));
+            }
+        })
+    })
+    
     document.getElementById("productTotalCost").innerHTML=DOLLAR_SYMBOL+" "+total;
-    document.getElementById("totalCost").innerHTML=DOLLAR_SYMBOL+total;
+}
+/*
+//validacion por bootstrap
+(function () {
+    'use strict';
+    window.addEventListener('load',function(){
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.fliter.call(forms, function(form){
+        form.addEventListener('submit', function (event) {
+          if (form.checkValidity()===false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated')
+        }, false);
+      });
+    }, false);
+})();*/
+
+function validarCampos1(){
+    let direccionCalle = document.getElementById('calleEnvio');
+    let direccionNumero = document.getElementById('numeroEnvio');
+    let direccionEsquina = document.getElementById('esquinaEnvio');
+    let direccionPais = document.getElementById('paisEnvio');
+    let camposValidos = 0;
+
+    let tipoEnvio = document.getElementsByName('envioTipo');
+    let tipoEnvioValido = false;
+    let tipoPago = document.getElementsByName('pagoTipo');
+    let tipoPagoValido = false;
+    
+    for (let i = 0; i < tipoEnvio.length; i++) {
+        if(tipoEnvio[i].checked){
+            tipoEnvioValido = true;
+        }    
+    }
+
+    for (let i = 0; i < tipoPago.length; i++) {
+        if(tipoPago[i].checked){
+            tipoPagoValido = true;
+        }    
+    }
+
+    let campos=[direccionCalle.value, direccionNumero.value, direccionEsquina.value,direccionPais.value,tipoEnvioValido,tipoPagoValido];
+    
+    for(i=0; i<campos.length; i++){
+        if(campos[i]!='' || campos[i]==true){
+            camposValidos += 1; 
+        }
+    }
+    if(camposValidos == campos.length){
+        swal("Finalizado!", "Compra realizada con éxito!", "success");
+        /* window.location.href="products.html"; */
+    }else{
+        swal("Debe completar todos los campos", "Revise los campos en rojo","warning");    }
 }
 

@@ -78,48 +78,47 @@
           
             <hr class="mb-4">
             <h4 class="mb-3">Tipo de envio</h4>
-            <div class="d-block my-3">
+            <form id="envioTipo" class="was-validated" novalidate>
               <div class="custom-control custom-radio">
-                <input id="enviopremium"  type="radio" name="envioTipo" class="custom-control-input" checked="" required="">
+                <input id="enviopremium"  type="radio" name="envioTipo" class="custom-control-input" value="0.15"  required="">
                 <label class="custom-control-label" for="enviopremium">Premium 2 a 5 dias (15%)</label>
               </div>
               <div class="custom-control custom-radio">
-                <input id="envioexpress"  type="radio" name="envioTipo" class="custom-control-input" required="">
+                <input id="envioexpress"  type="radio" name="envioTipo" class="custom-control-input" value="0.07"  required="">
                 <label class="custom-control-label" for="envioexpress">Express 5 a 8 dias (7%)</label>
               </div>
               <div class="custom-control custom-radio">
-                <input id="enviostandard"  type="radio" name="envioTipo" class="custom-control-input" required="">
+                <input id="enviostandard"  type="radio" name="envioTipo" class="custom-control-input" value="0.05" required="">
                 <label class="custom-control-label" for="enviostandard">Standard 12 a 15 dias (5%)</label>
               </div>
-            </div>
+            </form>
           <br>
           
           
             <h4 class="mb-3">Direccion de envio</h4>
-            <form class="needs-validation" id="cart-info">
+            <form class="was-validated" onsubmit="return false" id="cart-info" novalidate>
               
-                <div class="mb-3">
-                  <label for="calleenvio">Calle</label>
-                  <input type="text" class="form-control" id="calleenvio" placeholder="" value="" >
-                  <div class="invalid-feedback">
-                    Ingresar calle
-                  </div>
+                <div class="mb-3">            
+                  <label for="calleEnvio">Calle</label>
+                  <input type="text" class="form-control" id="calleEnvio" placeholder="Escribir calle" value="" required>
+
                   <label for="numeroenvio">Numero</label>
-                  <input type="text" class="form-control" id="numeroenvio" placeholder="" value="" >
-                  <div class="invalid-feedback">
-                    Ingresar numero
-                  </div>
-                  <label for="esquinaenvio">Equina</label>
-                  <input type="text" class="form-control" id="esquinaenvio" placeholder="" value="" >
-                  <div class="invalid-feedback">
-                    Ingresar esquina
-                  </div>
-                </div>
-              
-            </form>
-          
-            
-            <div class="row"></div>
+                  <input type="text" class="form-control" id="numeroEnvio" placeholder="Escribir numero" value="" required>
+
+                  <label for="esquinaEnvio">Esquina</label>
+                  <input type="text" class="form-control" id="esquinaEnvio" placeholder="Escribir esquina" value="" required>
+
+                    <label for="paisEnvio">Pais</label>
+                    <select id="paisEnvio" class="form-control " placeholder="seleccionar pais" required>
+                      <option disabled selected required="false">-Seleccionar pais</option>
+                      <option value="uy">Uruguay</option>
+                      <option value="ar">Argentina</option>
+                      <option value="br">Brasil</option>
+                      <option value="py">Paraguay</option>
+                      <option value="cl">Chile</option>
+                    </select>
+
+                </div>                
               <br>
               <h4 class="mb-3">Costos</h4>
               <ul class="list-group mb-3">
@@ -143,9 +142,81 @@
                   </li>
                 </ul>
                 <hr class="mb-4">
-              <button class="btn btn-primary btn-lg" type="submit">Vender</button>
+                <h4 class="mb-3">Forma de pago</h4>
+                <div class="row">
+                  <div class="col-md-8">
+                     <p>Transferencia bancaria</p>
+                    </div>              
+                  <button type="button" class="m-1 btn btn-link" data-toggle="modal" data-target="#contidionsModal">Opciones de pago</button>
+                </div>
+                <button class="btn btn-primary btn-lg" type="submit" onclick="validarCampos1()">Comprar</button>          
+          </form>
+          
+            
+            
+                <!--modal-->
+                <form class="was-validated" novalidate>
+                <div class="modal fade" tabindex="-1" role="dialog" id="contidionsModal">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Forma de pago</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="container">
+                          <div class="custom-control custom-radio">
+                            <input id="credito"  type="checkbox" name="pagoTipo" class="custom-control-input">
+                            <label class="custom-control-label" for="credito">Tarjeta de crédito</label>
+                          </div>
+                            <hr>
+                            <div class="row">
+                              <div class="col-md-6 mb-3">
+                                <label for="cardName" class="form-label">Nombre de tarjeta</label>
+                                <input type="text" class="form-control" id="cardName" placeholder="ingrese numero de tarjeta" value="" required>
+                              </div>
+                              <div class="col-md-6 mb-3">
+                                <label for="cardCode">Código de seguridad</label>
+                                <input  class="form-control" id="cardCode" placeholder="Ingrese código" type="text" required>
+                              </div>
+                            </div>                            
+                            <div class="row">
+                              <div class="col-md-6 mb-3">
+                              <label for="cardDate" class="form-label">Vencimiento</label>
+                                <input  class="form-control" type="month" id="cardDate"  placeholder="MM/AA" value="" required>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="custom-control custom-radio" style="margin-left: 19px;">
+                            <input id="banktransfer"  type="checkbox" name="pagoTipo" class="custom-control-input">
+                            <label class="custom-control-label" for="banktransfer">Transferencia bancaria</label>
+                          </div>
+                          <hr>
+                            <div class="row">
+                          <div class="col-md-6 mb-3" style="margin-left: 19px">
+                            <label for="userAge" class="form-label">Número de cuenta</label>
+                            <input  class="form-control" id="numCard" placeholder="Ingrese número" type="text" required>
+                          </div>
+                          <div class="row">
+                            <div class="modal-footer">
+                              <button type="submit" class="btn btn-primary"  data-bs-dismiss="modal">Guardar cambios</button>                          <br>
+                            </div>
+                          </div>
+                        </div>
+                      </div>      
+                    </div>
+                  </div>
+                </div>
+              </form>
               </div>
-            </div>
+              </div>
+                
+              <br>
+              <br>
+              <br>
+            
       </div>
     </div>    
   </div>
@@ -157,6 +228,7 @@
       <div></div>
     </div>
   </div>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/dropzone.js"></script>

@@ -157,3 +157,7 @@ a.custom-card:hover {
 #Ingreso23 {
   color: white;
 }
+
+.card-columns {
+  display: inline-block;
+}

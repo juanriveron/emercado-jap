@@ -115,24 +115,19 @@ function showProductsArray(){
     let htmlContentToAppend="";
     for(let i=0; i<currentProductsArray.length; i++){
         let product= currentProductsArray[i];
-
+        
         htmlContentToAppend+=`
-        <a href="product-info.html" class="list-group-item list-group-item-action">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="` + product.imgSrc + `" class="img-thumbnail">
-                    </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">`+ product.name +`</h4>
-                            <p>`+product.currency +" "+ product.cost + `</p>
-                        </div>
-                        <p class="mb-1">` + product.description + `</p>
-                        <small class="text-muted">` + product.soldCount + ` vendidos</small>
-                    </div>
-                </div>
-            </a>
-            `
+        <div class="card" style="width: 18rem;">
+            <img src="` + product.imgSrc + `" class="card-img-top">
+            <div class="card-body">
+                <h4 class="card-title">`+ product.name +`</h4>
+                <p>`+product.currency +" "+ product.cost + `</p>
+                <p class="card-text">` + product.description + `</p>
+                <small class="text-muted">` + product.soldCount + ` vendidos</small>
+                <a href="product-info.html" class="card-link">Ver</a>
+            </div>
+        </div>
+         `
             document.getElementById("product_list").innerHTML=htmlContentToAppend;
     }
 }

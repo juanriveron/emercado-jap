@@ -34,34 +34,27 @@ function sortProducts(criteria, array) {
     return result;
 }
 
-function showProductsList() {
-
-    let htmlContentToAppend = "";
-    for (let i = 0; i < currentProductsArray.length; i++) {
-        let product = currentProductsArray[i];
-
-        if (((minCount == undefined) || (minCount != undefined && parseInt(product.cost) >= minCount)) &&
-            ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))) {
-
-            htmlContentToAppend += `
-                <a href="product-info.html" class="list-group-item list-group-item-action">
-                        <div class="row">
-                            <div class="col-3">
-                                <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
-                            </div>
-                            <div class="col">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h4 class="mb-1">`+ product.name + `</h4>
-                                    <p>`+ product.currency + " " + product.cost + `</p>
-                                </div>
-                                <p class="mb-1">` + product.description + `</p>
-                                <small class="text-muted">` + product.soldCount + ` vendidos</small>
-                            </div>
-                        </div>
-                    </a>
-                    `
-        }
-        document.getElementById("product_list").innerHTML = htmlContentToAppend;
+function showProductsList(){
+    let htmlContentToAppend="";
+    for(let i=0; i<currentProductsArray.length; i++){
+        let product= currentProductsArray[i];
+        
+        htmlContentToAppend+=`
+        <a href="product-info.html" class="card-link">
+        <div class="col-md-4 col-lg-3">
+            <div class="card" style="width: 18rem;">
+            <img src="` + product.imgSrc + `" class="card-img-top">
+                <div class="card-body">
+                    <h4 class="card-title">`+ product.name +`</h4>
+                    <p>`+product.currency +" "+ product.cost + `</p>
+                    <p class="card-text">` + product.description + `</p>
+                     <small class="text-muted">` + product.soldCount + ` vendidos</small>
+                </div>
+            </div>
+        </div>
+        </a>
+         `
+            document.getElementById("product_list").innerHTML=htmlContentToAppend;
     }
 }
 
